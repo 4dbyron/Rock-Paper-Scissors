@@ -3,6 +3,7 @@
 # Task 55: Rock-Paper-Scissors
 # Rock-Paper-Scissors is a simple two-player game where, at a signal, players make figures with their hands,
 # representing a rock, a piece of paper, or a pair of scissors.
+
 # By Byron Taaka, For Zuri Training.
 
 import random
@@ -14,21 +15,21 @@ def play_rps():
 
     while True:  # handles ties
         # 3. Ask the user to pick an option between "R", "P" or "S"
-        user_option = input('What Is Your Move? ("R", "P" or "S"): ').upper()
+        user_option = input('What Is Your Move? ("R", "P" or "S"): ').upper().strip()
 
         # 4. on invalid input, print an error, and ask for input again
-        while user_option.upper() not in rps_options:
+        while user_option not in rps_options:
             print(f"\nError! Got '{user_option}', Yet 'R' or 'P' or 'S' Expected.\n")
-            user_option = input('What Is Your Move? ("R", "P" or "S"): ').upper()
+            user_option = input('What Is Your Move? ("R", "P" or "S"): ').upper().strip()
 
         # 5. make a choice for CPU player(computer) Using the `choice` function from the `random` module.
         computer_option = random.choice(rps_options)
 
-        # 6. using a dictionary to avoid "Player: CPU:" print repetition in if-elif-else statements.
+        # 6. Print both players' moves in the format: `Player (Rock) : CPU (Paper)`
         rps_dict = {"R": "Rock", "P": "Paper", "S": "Scissors"}
         print(f"Player ({rps_dict[user_option]}) : CPU ({rps_dict[computer_option]})")
 
-        # concat player choices into a two-characters string easy checking
+        # concat player choices into a two-characters string for easy checking (instead of using "and")
         moves = f"{user_option}{computer_option}"
 
         # 7 Check Player Moves
